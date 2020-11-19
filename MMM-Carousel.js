@@ -17,7 +17,7 @@ Module.register('MMM-Carousel', {
         bottom_center: { enabled: false, ignoreModules: [], overrideTransitionInterval: 10000 },
         bottom_right: { enabled: false, ignoreModules: [], overrideTransitionInterval: 10000 },
         bottom_bar: { enabled: false, ignoreModules: [], overrideTransitionInterval: 10000 },
-        setTimer: false,
+        setTimer: true,
         slides: [
             []
         ],
@@ -295,7 +295,9 @@ Module.register('MMM-Carousel', {
                     }
                 }
             }
+            return true;
         }
+        return false;
     },
 
     restartTimer: function () {
@@ -452,7 +454,7 @@ Module.register('MMM-Carousel', {
         if (noti === "CAROUSEL_GOTO") {
             if (typeof payload === "number" || typeof payload === "string") {
                 try {
-                    this.manualTransition(parseInt(payload) - 1);
+                    if(this.manualTransition(parseInt(payload) - 1))
                     this.restartTimer();
                 } catch (err) {
                     console.warn("Could not navigate to slide " + payload);
