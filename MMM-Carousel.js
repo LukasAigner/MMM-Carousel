@@ -142,10 +142,10 @@ Module.register('MMM-Carousel', {
         this.manualTransition = this.moduleTransition.bind(modules);
         this.manualTransition(goToIndex);
 
-        if (this.config.mode !== "slides" || (this.config.mode === "slides" && timer > 0 && this.config.setTimer)) {
+        if (this.config.mode !== "slides" || (this.config.mode === "slides" && timer > 0 && this.config.setTimer && this.transitionTimer==undefined)) {
             // We set a timer to cause the page transitions
             // If we're in slides mode and the timer is set to 0, we only use manual transitions
-            this.restartTimer();
+            this.transitionTimer = setInterval(this.manualTransition, this.config.transitionInterval);
         }
     },
 
