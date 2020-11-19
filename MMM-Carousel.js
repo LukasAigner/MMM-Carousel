@@ -188,6 +188,10 @@ Module.register('MMM-Carousel', {
             } else if (goToIndex >= 0 && goToIndex < resetCurrentIndex) {
                 this.currentIndex = goToIndex; // Go to a specific slide if in range
             }
+            else if(goToIndex >= 0 && goToIndex < resetCurrentIndex)
+            {
+                this.currentIndex=0;
+            }
 
             this.writeIndex(this.currentIndex);
             this.nextPage(this.currentIndex)
