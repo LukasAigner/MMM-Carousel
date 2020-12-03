@@ -15,15 +15,20 @@ module.exports = NodeHelper.create({
   socketNotificationReceived: function (noti, payload) {
     if(noti==="INIT")
     {
-      console.log("in Init")
-      var data = fs.readFileSync(path.resolve(__dirname + "/index.json"));
-			data = JSON.parse(data.toString());
-      this.sendSocketNotification("INITA",data);
+      try{
+        var data = fs.readFileSync(path.resolve(__dirname + "/index.json"));
+			  data = JSON.parse(data.toString());
+        this.sendSocketNotification("INITA",data);
+      }
+      catch
+      {
+        var obj={index:0}
+        this.sendSocketNotification("INITA",obj.toString());
+      }
     }
 
     if(noti==="INDEX")
     {
-      console.log("in Index");
       console.log(payload.index);
       fs.writeFileSync(path.resolve(__dirname + "/index.json"), JSON.stringify(payload));
     }

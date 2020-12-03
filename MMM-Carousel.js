@@ -17,7 +17,7 @@ Module.register('MMM-Carousel', {
         bottom_center: { enabled: false, ignoreModules: [], overrideTransitionInterval: 10000 },
         bottom_right: { enabled: false, ignoreModules: [], overrideTransitionInterval: 10000 },
         bottom_bar: { enabled: false, ignoreModules: [], overrideTransitionInterval: 10000 },
-        setTimer: true,
+        setTimer: false,
         slides: [
             []
         ],
